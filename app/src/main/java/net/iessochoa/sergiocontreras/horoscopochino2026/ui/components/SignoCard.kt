@@ -16,6 +16,19 @@ import androidx.compose.ui.unit.dp
 import net.iessochoa.sergiocontreras.horoscopochino2026.data.model.SignoChino
 import net.iessochoa.sergiocontreras.horoscopochino2026.ui.theme.HoroscopoChino2026Theme
 
+/**
+ * Tarjeta visual que representa un signo del horóscopo chino.
+ *
+ * Muestra el emoji, el nombre y los tres últimos años representativos del signo,
+ * con una disposición centrada y espaciado uniforme. Es interactiva: al pulsar sobre
+ * ella se navega al detalle del signo.
+ *
+ * @param signo Datos del [SignoChino] a mostrar (emoji, nombre y años representativos).
+ * @param onClick Acción ejecutada al pulsar la tarjeta (normalmente navegar al detalle).
+ * @param modifier Modificador opcional para personalizar el layout externo de la tarjeta.
+ *
+ * @sample net.iessochoa.sergiocontreras.horoscopochino2026.ui.components.SignoCardPreview
+ */
 @Composable
 fun SignoCard(
     signo: SignoChino,
