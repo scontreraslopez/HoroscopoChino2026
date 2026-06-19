@@ -22,6 +22,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import net.iessochoa.sergiocontreras.horoscopochino2026.data.model.ElementoChino
+import net.iessochoa.sergiocontreras.horoscopochino2026.data.repository.HoroscopoRepository
 import net.iessochoa.sergiocontreras.horoscopochino2026.ui.screens.HoroscopoUiState
 import net.iessochoa.sergiocontreras.horoscopochino2026.ui.theme.HoroscopoChino2026Theme
 
@@ -129,7 +131,10 @@ private fun SignoDetailScreenPreview() {
     HoroscopoChino2026Theme() {
         SignoDetailScreen(
             uiState = HoroscopoUiState(
+                signoSeleccionado = HoroscopoRepository.signos.firstOrNull(),
                 anioNacimiento = "1990",
+                elementoCalculado = ElementoChino.METAL
+
                 // Assuming HoroscopoUiState has a way to provide a mock or default sign
                 // This follows the pattern of the existing UI code
             ),

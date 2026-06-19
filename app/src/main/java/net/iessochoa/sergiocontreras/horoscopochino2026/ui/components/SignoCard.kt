@@ -11,8 +11,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import net.iessochoa.sergiocontreras.horoscopochino2026.data.model.SignoChino
+import net.iessochoa.sergiocontreras.horoscopochino2026.ui.theme.HoroscopoChino2026Theme
 
 @Composable
 fun SignoCard(
@@ -46,5 +48,26 @@ fun SignoCard(
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun SignoCardPreview() {
+
+    val signoCaballo = SignoChino (
+        id = "caballo",
+        nombre = "Caballo",
+        emoji = "🐎",
+        aniosRepresentativos = listOf(1966, 1978, 1990, 2002, 2014, 2026),
+        descripcion = "Libre, enérgico e independiente. El Caballo necesita espacio para correr y se apaga cuando lo encadenan a la rutina.",
+        prediccion2026 = "¡Es tu año! El Caballo galopa con fuerza renovada hacia sus sueños. Todo lo que desees construir tiene el viento a favor."
+    )
+
+    HoroscopoChino2026Theme() {
+        SignoCard(
+            signo = signoCaballo,
+            onClick = {},
+        )
     }
 }
