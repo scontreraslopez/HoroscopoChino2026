@@ -7,11 +7,11 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
@@ -29,8 +29,10 @@ fun HoroscopoChinoApp() {
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = { Text(if (enDetalle) "Tu horóscopo" else "Horóscopo Chino 2026") },
+            CenterAlignedTopAppBar(
+                title = { Text(
+                    text = if (enDetalle) "Tu horóscopo" else "Horóscopo Chino 2026",
+                ) },
                 navigationIcon = {
                     if (enDetalle) {
                         IconButton(onClick = { navController.popBackStack() }) {
