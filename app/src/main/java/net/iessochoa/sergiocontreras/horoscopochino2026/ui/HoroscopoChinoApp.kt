@@ -18,38 +18,28 @@ import androidx.navigation.compose.rememberNavController
 import net.iessochoa.sergiocontreras.horoscopochino2026.ui.navigation.AppNavigation
 import net.iessochoa.sergiocontreras.horoscopochino2026.ui.navigation.Routes
 import net.iessochoa.sergiocontreras.horoscopochino2026.ui.screens.HoroscopoViewModel
+import net.iessochoa.sergiocontreras.horoscopochino2026.ui.screens.lista.SignoListScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HoroscopoChinoApp() {
-    val navController = rememberNavController()
-    val viewModel: HoroscopoViewModel = viewModel()
-    val backStackEntry by navController.currentBackStackEntryAsState()
-    val enDetalle = backStackEntry?.destination?.route == Routes.DETALLE
+
+    //TODO: Completa
 
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
                 title = { Text(
-                    text = if (enDetalle) "Tu horóscopo" else "Horóscopo Chino 2026",
-                ) },
-                navigationIcon = {
-                    if (enDetalle) {
-                        IconButton(onClick = { navController.popBackStack() }) {
-                            Icon(
-                                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                contentDescription = "Volver",
-                            )
-                        }
-                    }
-                },
+                    text = "CAMBIAME POR EL TITULO",
+                ) }
+                //TODO: Completa el navigationIcon = {
             )
         },
     ) { innerPadding ->
-        AppNavigation(
-            viewModel = viewModel,
-            navController = navController,
-            modifier = Modifier.padding(innerPadding),
+        //TODO Aquí engancha la navegación
+        SignoListScreen(
+
+
         )
     }
 }

@@ -21,6 +21,10 @@ fun SignoListScreen(
     onSignoClick: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+
+    //TODO:
+
+
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         modifier = modifier.fillMaxSize(),

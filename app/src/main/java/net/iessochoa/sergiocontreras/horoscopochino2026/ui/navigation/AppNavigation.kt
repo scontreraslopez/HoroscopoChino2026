@@ -1,48 +1,32 @@
 package net.iessochoa.sergiocontreras.horoscopochino2026.ui.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.compose.ui.Modifier
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import net.iessochoa.sergiocontreras.horoscopochino2026.ui.screens.HoroscopoViewModel
-import net.iessochoa.sergiocontreras.horoscopochino2026.ui.screens.detalle.SignoDetailScreen
-import net.iessochoa.sergiocontreras.horoscopochino2026.ui.screens.lista.SignoListScreen
+
+/**
+ * STARTER — Navegación (Navigation Compose).
+ *
+ * Monta el NavHost con dos destinos: la lista de signos y el detalle.
+ * Las pantallas (SignoListScreen / SignoDetailScreen) ya existen y son stateless:
+ * reciben el uiState y callbacks.
+ *
+ * Reglas:
+ *  - El destino inicial es la lista.
+ *  - El signo seleccionado viaja en el ESTADO, no como argumento de ruta.
+ *  - Recoge el estado del ViewModel y pásalo a cada pantalla.
+ *  - Al pulsar un signo: primero actualiza el estado en el ViewModel y luego navega al detalle.
+ *
+ *  Si necesitas crear ficheros o clases auxiliares sientete libre de hacerlo.
+ */
 
 object Routes {
-    const val LISTA = "lista"
-    const val DETALLE = "detalle"
+    //TODO: Definir las rutas, aquí o en otro archivo separado, con o sin interfaz.
+
 }
 
 @Composable
 fun AppNavigation(
-    viewModel: HoroscopoViewModel,
-    navController: NavHostController,
-    modifier: Modifier = Modifier,
-) {
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    //TODO: Implementar Navigation con NavHost y las rutas.
 
-    NavHost(
-        navController = navController,
-        startDestination = Routes.LISTA,
-        modifier = modifier,
-    ) {
-        composable(Routes.LISTA) {
-            SignoListScreen(
-                uiState = uiState,
-                onSignoClick = { id ->
-                    viewModel.onSignoSelected(id)
-                    navController.navigate(Routes.DETALLE)
-                },
-            )
-        }
-        composable(Routes.DETALLE) {
-            SignoDetailScreen(
-                uiState = uiState,
-                onAnioChange = viewModel::onAnioNacimientoChange,
-            )
-        }
-    }
+) {
+
 }
