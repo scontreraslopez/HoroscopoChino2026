@@ -15,21 +15,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import net.iessochoa.sergiocontreras.horoscopochino2026.data.model.ElementoChino
 import net.iessochoa.sergiocontreras.horoscopochino2026.data.repository.HoroscopoRepository
 import net.iessochoa.sergiocontreras.horoscopochino2026.ui.components.ElementoCalculadorCard
 import net.iessochoa.sergiocontreras.horoscopochino2026.ui.components.PrediccionCard
 import net.iessochoa.sergiocontreras.horoscopochino2026.ui.components.SignoHeader
-import net.iessochoa.sergiocontreras.horoscopochino2026.ui.screens.HoroscopoUiState
 import net.iessochoa.sergiocontreras.horoscopochino2026.ui.theme.HoroscopoChino2026Theme
 
+//TODO: Tendras que modificar la firma del composable para que reciba el estado y el callback
 @Composable
 fun SignoDetailScreen(
-    uiState: HoroscopoUiState,
-    onAnioChange: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val signo = uiState.signoSeleccionado ?: return
+
+    //TODO: el signo tiene que venir del estado (uiState.signoSeleccionado), aqui esta a fuego
+    val signo = HoroscopoRepository.signos.first()
 
     Column(
         modifier = modifier
@@ -46,9 +45,12 @@ fun SignoDetailScreen(
         PrediccionCard(prediccion = signo.prediccion2026)
 
         ElementoCalculadorCard(
-            anioNacimiento = uiState.anioNacimiento,
-            onAnioChange = onAnioChange,
-            elementoCalculado = uiState.elementoCalculado,
+            //TODO: el año tiene que venir del estado (uiState.anioNacimiento)
+            anioNacimiento = "",
+            //TODO: tienes que conectar el callback que avisa al ViewModel del cambio
+            onAnioChange = { /*TODO*/ },
+            //TODO: el elemento calculado tiene que venir del estado (uiState.elementoCalculado)
+            elementoCalculado = null,
         )
 
         Text(
@@ -65,15 +67,7 @@ fun SignoDetailScreen(
 private fun SignoDetailScreenPreview() {
     HoroscopoChino2026Theme() {
         SignoDetailScreen(
-            uiState = HoroscopoUiState(
-                signoSeleccionado = HoroscopoRepository.signos.firstOrNull(),
-                anioNacimiento = "1990",
-                elementoCalculado = ElementoChino.METAL
 
-                // Assuming HoroscopoUiState has a way to provide a mock or default sign
-                // This follows the pattern of the existing UI code
-            ),
-            onAnioChange = {}
         )
     }
 }

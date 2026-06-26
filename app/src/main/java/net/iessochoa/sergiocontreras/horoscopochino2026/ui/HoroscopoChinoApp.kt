@@ -38,8 +38,7 @@ fun HoroscopoChinoApp() {
     ) { innerPadding ->
         //TODO Aquí engancha la navegación
         SignoListScreen(
-
-
+            modifier = Modifier.padding(innerPadding)
         )
     }
 }

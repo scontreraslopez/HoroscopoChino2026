@@ -82,6 +82,8 @@ data/
 
 Las pantallas son **stateless**: reciben el `HoroscopoUiState` y callbacks (`onSignoClick`, `onAnioChange`). El `ViewModel` nunca se pasa directamente a una `screen`, solo a `AppNavigation`, que enlaza las acciones con métodos del VM.
 
+> En el material de partida las dos pantallas vienen como *starter*: tienen el layout montado pero con los **datos a fuego** (leen directamente de `HoroscopoRepository`) y los callbacks sin conectar. El alumno debe **cambiar la firma** de cada composable para que reciba el estado y los callbacks, y sustituir los valores hardcodeados por lo que viene del `HoroscopoUiState`. Es la comprobación de que sabe conectar el estado con la vista.
+
 ### Navegación
 
 `AppNavigation` define un `NavHost` con dos destinos (lista y detalle), siendo la lista el destino inicial:
@@ -154,7 +156,7 @@ Esta convocatoria evalúa **MVVM y Navigation**; la capa de datos (`HoroscopoRep
 | `HoroscopoViewModel` | Exponer `StateFlow<HoroscopoUiState>`, `onSignoSelected` y `onAnioNacimientoChange` (incluido el cálculo del elemento). |
 | `AppNavigation` | `NavHost` con rutas `LISTA`/`DETALLE`, conectar callbacks de las pantallas con el VM y `navigate` / `popBackStack`. |
 | `HoroscopoChinoApp` | `Scaffold` + `TopAppBar` con título dinámico y flecha *Volver* según la ruta actual. |
-| Pantallas (`SignoListScreen`, `SignoDetailScreen`) | Renderizar el estado y emitir callbacks (stateless). |
+| Pantallas (`SignoListScreen`, `SignoDetailScreen`) | Vienen como *starter* con datos a fuego: cambiar la firma para recibir el estado y los callbacks, y reemplazar los valores hardcodeados por los del `HoroscopoUiState` (stateless). |
 
 ### Rúbrica orientativa (sobre 10)
 

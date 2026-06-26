@@ -12,17 +12,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import net.iessochoa.sergiocontreras.horoscopochino2026.data.repository.HoroscopoRepository
 import net.iessochoa.sergiocontreras.horoscopochino2026.ui.components.SignoCard
-import net.iessochoa.sergiocontreras.horoscopochino2026.ui.screens.HoroscopoUiState
 import net.iessochoa.sergiocontreras.horoscopochino2026.ui.theme.HoroscopoChino2026Theme
 
+//TODO: Tendras que modificar la firma del composable para que reciba el estado y el callback
 @Composable
 fun SignoListScreen(
-    uiState: HoroscopoUiState,
-    onSignoClick: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
 
-    //TODO:
+    //TODO: este bloque tienes que cambiarlo por el estado esta a fuego aqui
+
+    val signos =  HoroscopoRepository.signos
 
 
     LazyVerticalGrid(
@@ -32,10 +32,10 @@ fun SignoListScreen(
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        items(uiState.signos, key = { it.id }) { signo ->
+        items(signos, key = { it.id }) { signo ->
             SignoCard(
                 signo = signo,
-                onClick = { onSignoClick(signo.id) },
+                onClick = { /*TODO*/ },
             )
         }
     }
@@ -46,8 +46,7 @@ fun SignoListScreen(
 private fun SignoListScreenPreview() {
     HoroscopoChino2026Theme() {
         SignoListScreen(
-            uiState = HoroscopoUiState(),
-            onSignoClick = {},
+
         )
     }
 }
